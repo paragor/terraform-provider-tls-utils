@@ -6,7 +6,6 @@ import (
 	"crypto"
 	"crypto/rand"
 	"crypto/x509"
-	"encoding/base64"
 	"encoding/hex"
 	"encoding/pem"
 	"fmt"
@@ -34,7 +33,7 @@ func resourceEncryptedPem() *schema.Resource {
 				ForceNew:    true,
 			},
 			"encrypted_pem": {
-				Description: "Encrypted private key; base64 encoded.",
+				Description: "Encrypted private key; in PEM format.",
 				Type:        schema.TypeString,
 				Computed:    true,
 			},
@@ -57,15 +56,13 @@ func resourceEncryptedPemCreate(_ context.Context, d *schema.ResourceData, _ int
 		return diag.FromErr(fmt.Errorf("error during encoding encrypted PEM block: %w", err))
 	}
 
-	jksData := base64.StdEncoding.EncodeToString(buffer.Bytes())
-
 	idHash := crypto.SHA1.New()
-	idHash.Write([]byte(jksData))
+	idHash.Write(buffer.Bytes())
 
 	id := hex.EncodeToString(idHash.Sum([]byte{}))
 	d.SetId(id)
 
-	if err = d.Set("encrypted_pem", jksData); err != nil {
+	if err = d.Set("encrypted_pem", buffer.String()); err != nil {
 		return diag.FromErr(fmt.Errorf("failed to save encrypted PEM block: %w", err))
 	}
 
