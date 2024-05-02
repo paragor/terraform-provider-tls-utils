@@ -1,6 +1,6 @@
 module terraform-provider-tlsutils
 
-go 1.18
+go 1.22.1
 
 require github.com/hashicorp/terraform-plugin-sdk/v2 v2.10.1
 
