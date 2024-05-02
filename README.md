@@ -1,4 +1,4 @@
-# Terraform Provider JKS Trust Store Generator
+# Terraform Provider TLS Utils
 
 Run the following command to build the provider
 

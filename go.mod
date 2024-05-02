@@ -1,4 +1,4 @@
-module terraform-provider-tls-utils
+module terraform-provider-tlsutils
 
 go 1.18
 

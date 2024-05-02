@@ -8,7 +8,7 @@ import (
 func Provider() *schema.Provider {
 	return &schema.Provider{
 		ResourcesMap: map[string]*schema.Resource{
-			"tlsutils_encrypted_pem": resourceEncryptedPem(),
+			"tlsutils_x509_crl": resourceX509Crl(),
 		},
 		DataSourcesMap: map[string]*schema.Resource{},
 	}

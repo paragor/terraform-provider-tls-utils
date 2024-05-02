@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
-	"terraform-provider-tls-utils/tlsutils"
+	"terraform-provider-tlsutils/tlsutils"
 )
 
 func main() {

@@ -3,7 +3,7 @@ HOSTNAME=hashicorp.com
 NAMESPACE=paragor
 NAME=tlsutils
 BINARY=terraform-provider-${NAME}
-VERSION=0.2.0
+VERSION=0.3.0
 OS_ARCH=darwin_arm64
 
 default: install
